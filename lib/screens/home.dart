@@ -5,6 +5,7 @@ import 'package:crpapp/screens/final.dart';
 import 'package:crpapp/questionData.dart' as myQuestions;
 import 'dart:async';
 import 'package:connectivity/connectivity.dart';
+import 'package:date_format/date_format.dart';
 
 class Home extends StatefulWidget{
 
@@ -151,6 +152,11 @@ class _State extends State<Home>{
 
 void setAllText(){
 
+  var timeNow = new DateTime.now();
+  String gotDate = (formatDate(timeNow, [dd, '-', mm, '-', yyyy]));
+
+  myQuestions.dateOfVisit[1] = gotDate;
+
   idController.text = myQuestions.thePatientID[1];
   fileController.text = myQuestions.fileNO[1];
   dateVisitController.text = myQuestions.dateOfVisit[1];
@@ -259,17 +265,12 @@ void setAllText(){
           actions: <Widget>[
       // action button
       IconButton(
-      icon:  new Icon(Icons.person),
+      icon:  new Icon(Icons.arrow_forward),
       onPressed: () {
         nextPage();
       },
       ),
-      IconButton(
-        icon:  new Icon(Icons.file_download),
-        onPressed: () {
-          _patientData(myQuestions.thePatientID[1]);
-        },
-      ),
+
       ],
     ),
 
@@ -369,6 +370,27 @@ void setAllText(){
 
                   hintText: '',
                   labelText: 'Type of Visit:',
+
+                ),
+
+              ),
+            ),
+
+            new ListTile(
+              leading: const Icon(Icons.person),
+              title: new TextField(
+                autofocus: true,
+                controller: priorityController,
+                onChanged: (String value) {
+                  onChangedVisitPriority(value);
+                },
+                maxLines: 1,
+                autocorrect: false,
+                keyboardType: TextInputType.text,
+                decoration: new InputDecoration(
+
+                  hintText: '',
+                  labelText: 'Visit Priority',
 
                 ),
 
@@ -480,26 +502,7 @@ void setAllText(){
               ),
             ),
 
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
-                  controller: priorityController,
-                onChanged: (String value) {
-                  onChangedVisitPriority(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
 
-                  hintText: '',
-                  labelText: 'Visit Priority',
-
-                ),
-
-              ),
-            ),
 
             new ListTile(
               leading: const Icon(Icons.person),
