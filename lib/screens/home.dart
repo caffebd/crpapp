@@ -260,6 +260,8 @@ void setAllText(){
 
   Widget build(BuildContext context) {
 
+    
+
     WidgetsBinding.instance
         .addPostFrameCallback((_) => setAllText());
 
