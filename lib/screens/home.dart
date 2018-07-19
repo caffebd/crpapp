@@ -259,34 +259,36 @@ void setAllText(){
 
 
   Widget build(BuildContext context) {
-
-    
-
     WidgetsBinding.instance
         .addPostFrameCallback((_) => setAllText());
 
-    double height = MediaQuery.of(context).size.width;
+    double height = MediaQuery
+        .of(context)
+        .size
+        .width;
 
     double setHeight = height * .70;
 
-    // TODO: implement build
-    return new Scaffold(
-      key:_scaffoldstate,
-      appBar: AppBar(
+    return new WillPopScope(
+
+
+      // TODO: implement build
+      child: new Scaffold(
+        key: _scaffoldstate,
+        appBar: AppBar(
           title: const Text('Basic AppBar'),
           actions: <Widget>[
-      // action button
-      IconButton(
-      icon:  new Icon(Icons.arrow_forward, size: 40.0),
+            // action button
+            IconButton(
+              icon: new Icon(Icons.arrow_forward, size: 40.0),
 
-      onPressed: () {
-        nextPage();
-      },
-      ),
+              onPressed: () {
+                nextPage();
+              },
+            ),
 
-      ],
-    ),
-
+          ],
+        ),
 
 
         body: new Container(
@@ -295,283 +297,284 @@ void setAllText(){
 
           child: new
 
-        ListView(
+          ListView(
 
-          children: <Widget>[
+            children: <Widget>[
 
-            new ListTile(
-              leading: const Icon(Icons.person),
-              trailing:  IconButton(
-                icon:  new Icon(Icons.cloud_download, size: 35.0),
-                onPressed: () {
-                  _patientData(myQuestions.thePatientID[1]);
-                },
-              ),
-              title: new TextField(
-                autofocus: true,
-                controller: idController,
-                onChanged: (String value) {
-                  onChangedID(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
+              new ListTile(
+                leading: const Icon(Icons.person),
+                trailing: IconButton(
+                  icon: new Icon(Icons.cloud_download, size: 35.0),
+                  onPressed: () {
+                    _patientData(myQuestions.thePatientID[1]);
+                  },
+                ),
+                title: new TextField(
+                  autofocus: true,
+                  controller: idController,
+                  onChanged: (String value) {
+                    onChangedID(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
 
-                  hintText: '',
-                  labelText: 'Patient ID',
+                    hintText: '',
+                    labelText: 'Patient ID',
+
+                  ),
 
                 ),
-
               ),
-            ),
 
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
-                controller: fileController,
-                onChanged: (String value) {
-                  onChangedFile(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
+                  controller: fileController,
+                  onChanged: (String value) {
+                    onChangedFile(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
 
-                  hintText: '',
-                  labelText: 'File NO',
+                    hintText: '',
+                    labelText: 'File NO',
+
+                  ),
 
                 ),
-
               ),
-            ),
 
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
                   controller: dateVisitController,
-                onChanged: (String value) {
-                  onChangedDate(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
+                  onChanged: (String value) {
+                    onChangedDate(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
 
-                  hintText: '',
-                  labelText: 'Date of visit',
+                    hintText: '',
+                    labelText: 'Date of visit',
 
-                ),
-
-              ),
-            ),
-
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
-                onChanged: (String value) {
-                  onChangedTypeVisit(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                controller: typeVisitController,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
-
-                  hintText: '',
-                  labelText: 'Type of Visit:',
+                  ),
 
                 ),
-
               ),
-            ),
 
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
-                controller: priorityController,
-                onChanged: (String value) {
-                  onChangedVisitPriority(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
+                  onChanged: (String value) {
+                    onChangedTypeVisit(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  controller: typeVisitController,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
 
-                  hintText: '',
-                  labelText: 'Visit Priority',
+                    hintText: '',
+                    labelText: 'Type of Visit:',
+
+                  ),
 
                 ),
-
               ),
-            ),
 
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
+                  controller: priorityController,
+                  onChanged: (String value) {
+                    onChangedVisitPriority(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
+
+                    hintText: '',
+                    labelText: 'Visit Priority',
+
+                  ),
+
+                ),
+              ),
+
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
                   controller: nameController,
-                onChanged: (String value) {
-                  onChangedPatientName(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
+                  onChanged: (String value) {
+                    onChangedPatientName(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
 
-                  hintText: '',
-                  labelText: 'Patient Name',
+                    hintText: '',
+                    labelText: 'Patient Name',
+
+                  ),
 
                 ),
-
               ),
-            ),
 
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
                   controller: ageController,
-                onChanged: (String value) {
-                  onChangedPatientAge(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
+                  onChanged: (String value) {
+                    onChangedPatientAge(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
 
-                  hintText: '',
-                  labelText: 'Patient Age',
+                    hintText: '',
+                    labelText: 'Patient Age',
+
+                  ),
 
                 ),
-
               ),
-            ),
 
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
                   controller: addressController,
-                onChanged: (String value) {
-                  onChangedPatientAddress(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
+                  onChanged: (String value) {
+                    onChangedPatientAddress(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
 
-                  hintText: '',
-                  labelText: 'Patient Address',
+                    hintText: '',
+                    labelText: 'Patient Address',
 
-                ),
-
-              ),
-            ),
-
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
-                controller: phoneController,
-                onChanged: (String value) {
-                  onChangedPatientPhone(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
-
-                  hintText: '',
-                  labelText: 'Patient Phone No',
+                  ),
 
                 ),
-
               ),
-            ),
 
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
+                  controller: phoneController,
+                  onChanged: (String value) {
+                    onChangedPatientPhone(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
+
+                    hintText: '',
+                    labelText: 'Patient Phone No',
+
+                  ),
+
+                ),
+              ),
+
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
                   controller: dischargeController,
-                onChanged: (String value) {
-                  onChangedDischargePriority(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
+                  onChanged: (String value) {
+                    onChangedDischargePriority(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
 
-                  hintText: '',
-                  labelText: 'Discharge Priority',
+                    hintText: '',
+                    labelText: 'Discharge Priority',
+
+                  ),
 
                 ),
-
               ),
-            ),
 
 
-
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
                   controller: familyController,
-                onChanged: (String value) {
-                  onChangedFamilyMember(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
+                  onChanged: (String value) {
+                    onChangedFamilyMember(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
 
-                  hintText: '',
-                  labelText: 'No of family members',
+                    hintText: '',
+                    labelText: 'No of family members',
 
-                ),
-
-              ),
-            ),
-
-            new ListTile(
-              leading: const Icon(Icons.person),
-              title: new TextField(
-                autofocus: true,
-                controller: earningController,
-                onChanged: (String value) {
-                  onChangedEarningMembers(value);
-                },
-                maxLines: 1,
-                autocorrect: false,
-                keyboardType: TextInputType.text,
-                decoration: new InputDecoration(
-
-                  hintText: '',
-                  labelText: 'Earning family members',
+                  ),
 
                 ),
-
               ),
-            ),
+
+              new ListTile(
+                leading: const Icon(Icons.person),
+                title: new TextField(
+                  autofocus: true,
+                  controller: earningController,
+                  onChanged: (String value) {
+                    onChangedEarningMembers(value);
+                  },
+                  maxLines: 1,
+                  autocorrect: false,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
+
+                    hintText: '',
+                    labelText: 'Earning family members',
+
+                  ),
+
+                ),
+              ),
 
 
-          ],
+            ],
+
+          ),
+
 
         ),
 
 
-
-        )
+      ),
+      onWillPop: () {
+        return new Future(() => false);
+      },
 
     );
-
-
   }
-
 
 }
