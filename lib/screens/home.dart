@@ -39,6 +39,8 @@ class _State extends State<Home>{
   final familyController = TextEditingController();
   final earningController = TextEditingController();
 
+
+
   void nextPage(){
 
     Navigator.of(context).pushNamed('/Question');
@@ -250,8 +252,16 @@ void setAllText(){
   }
 
 
+
+
   @override
+
+
+
   Widget build(BuildContext context) {
+
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => setAllText());
 
     double height = MediaQuery.of(context).size.width;
 
@@ -265,7 +275,8 @@ void setAllText(){
           actions: <Widget>[
       // action button
       IconButton(
-      icon:  new Icon(Icons.arrow_forward),
+      icon:  new Icon(Icons.arrow_forward, size: 40.0),
+
       onPressed: () {
         nextPage();
       },
@@ -289,7 +300,7 @@ void setAllText(){
             new ListTile(
               leading: const Icon(Icons.person),
               trailing:  IconButton(
-                icon:  new Icon(Icons.cloud_download),
+                icon:  new Icon(Icons.cloud_download, size: 35.0),
                 onPressed: () {
                   _patientData(myQuestions.thePatientID[1]);
                 },
